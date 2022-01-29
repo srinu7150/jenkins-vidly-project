@@ -10,5 +10,5 @@ docker run \
 --env DB_PASSWORD=$DB_CREDENTIALS_PSW \
 --env DB_NAME=$DB_NAME \
 -v /backend/node_modules \
-backend:$BUILD_TAG \
+backend:$BUILD_NUMBER \
 npm test
