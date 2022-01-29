@@ -11,4 +11,4 @@ docker run \
 --env DB_NAME=$DB_NAME \
 -v /backend/node_modules \
 backend:$BUILD_NUMBER \
-migrate-mongo up && npm test
+npm run db:up up && npm test
