@@ -10,8 +10,8 @@ pipeline {
         stage('Build') {
             steps {
                 sh """
-                    ls -lah
-                    docker build -t backend:$BUILD_TAG -f backend/Dockerfile
+                    cd backend
+                    docker build -t backend:$BUILD_TAG .
                 """
             }
         }
