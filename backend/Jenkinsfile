@@ -19,7 +19,7 @@ pipeline {
             steps {
                 echo 'Testing backend..'
                 sh """
-                    ls -lah
+                    cd backend
                     ./jenkins-scripts/test.sh
                 """
             }
