@@ -20,7 +20,7 @@ pipeline {
                 echo 'Testing backend..'
                 sh """
                     cd backend
-                    ./jenkins-scripts/test.sh
+                    ./jenkins-scripts/testing/test.sh
                 """
             }
         }

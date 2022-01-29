@@ -11,4 +11,5 @@ docker run \
 --env DB_NAME=$DB_NAME \
 -v /backend/node_modules \
 backend:$BUILD_NUMBER \
-npm run db:up up && npm test
+./docker-entrypoint.sh
+
