@@ -1,0 +1,38 @@
+pipeline {
+    agent any
+
+    environment {
+        DB_CREDENTIALS = credentials('DB_CREDENTIALS')
+        DB_NAME = credentials('DB_NAME')
+    }
+
+    stages {
+        stage('Build') {
+            steps {
+                sh """
+                    echo "**********************"
+                    echo "***building backend***"
+                    echo "**********************"
+                    docker build -t backend:$BUILD_TAG .
+                """
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'Testing backend..'
+                sh """
+                    echo "*********************"
+                    echo "***testing backend***"
+                    echo "*********************"
+
+                    docker-compose -f ./jenkins-scripts/docker-compose.test.yml up
+                """
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying....'
+            }
+        }
+    }
+}

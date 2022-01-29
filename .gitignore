@@ -1,1 +1,3 @@
 backend.env
+node_modules
+backend/jenkins-scripts/test.sh
