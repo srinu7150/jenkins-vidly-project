@@ -15,11 +15,10 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh """
-                    echo "building docker image for backend"
-                    cd backend
-                    docker build -t backend:$BUILD_NUMBER .
-                """
+                    sh 'echo "building docker image for backend"'
+                dir(backend) {
+                    sh "docker build -t backend:$BUILD_NUMBER" .
+                }
             }
         }
         stage('Test') {
