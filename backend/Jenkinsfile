@@ -30,6 +30,9 @@ pipeline {
             }
         }
         stage('Deploy') {
+            when {
+                branch 'main'
+            }
             steps {
                 echo 'Pushing backend image to dockerhub...'
                 dir("backend") {
