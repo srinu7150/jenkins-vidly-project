@@ -3,8 +3,6 @@
 echo "*********************"
 echo "***testing backend***"
 echo "*********************"
-echo $pwd
-echo ls -lah
 
 docker run \
 --rm \
