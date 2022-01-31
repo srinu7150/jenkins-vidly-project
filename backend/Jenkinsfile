@@ -16,7 +16,7 @@ pipeline {
         stage('Build') {
             steps {
                     sh 'echo "building docker image for backend"'
-                dir(backend) {
+                dir("backend") {
                     sh "docker build -t backend:$BUILD_NUMBER ."
                 }
             }
