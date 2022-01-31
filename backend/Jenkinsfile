@@ -32,9 +32,9 @@ pipeline {
             }
         }
         stage('Deploy') {
-            when {
-                $branch "main"
-            }
+            // when {
+            //     $branch "main"
+            // }
             steps {
                 echo "tagging docker image with valid name"
                 docker tag 
