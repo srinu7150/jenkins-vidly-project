@@ -33,9 +33,7 @@ pipeline {
         }
         stage('Deploy') {
             when {
-                expression{
-                    return params.deploy
-                }
+                $branch "main"
             }
             steps {
                 echo "tagging docker image with valid name"
