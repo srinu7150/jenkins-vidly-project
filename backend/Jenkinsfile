@@ -4,16 +4,15 @@ pipeline {
     environment {
         DB_CREDENTIALS = credentials('DB_CREDENTIALS')
         DB_NAME = credentials('DB_NAME')
+        DOCKER_CREDENTIALS = credentials('DOCKER_CREDENTIALS')
     }
 
     stages {
         stage('Build') {
             steps {
                 sh """
-                    echo "**********************"
-                    echo "***building backend***"
-                    echo "**********************"
-                    docker build -t backend:$BUILD_TAG .
+                    cd backend
+                    docker build -t backend:$BUILD_NUMBER .
                 """
             }
         }
@@ -21,17 +20,18 @@ pipeline {
             steps {
                 echo 'Testing backend..'
                 sh """
-                    echo "*********************"
-                    echo "***testing backend***"
-                    echo "*********************"
-
-                    docker-compose -f ./jenkins-scripts/docker-compose.test.yml up
+                    cd backend
+                    ./jenkins-scripts/testing/test.sh
                 """
             }
         }
         stage('Deploy') {
+            when {
+                branch 'main'
+            }
             steps {
                 echo 'Deploying....'
+                println "${branch}"
             }
         }
     }
