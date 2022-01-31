@@ -1,11 +1,6 @@
 pipeline {
     agent any
 
-    parameters {
-        string(name: 'Repo_account', defaultValue: 'srinu7150', description: 'docker_repository_for_deployment')
-        booleanParam(name: 'deploy', defaultValue: false, description: 'Choose_to_deploy_into_repository')
-    }
-
     environment {
         DB_CREDENTIALS = credentials('DB_CREDENTIALS')
         DB_NAME = credentials('DB_NAME')
