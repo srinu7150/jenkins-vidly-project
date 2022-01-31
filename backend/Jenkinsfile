@@ -31,7 +31,10 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                echo 'Deploying....'
+                echo 'Pushing backend image to dockerhub...'
+                dir("backend") {
+                    sh "./jenkins-scripts/deploying/deploy.sh"
+                }
             }
         }
     }
