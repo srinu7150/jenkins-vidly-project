@@ -24,10 +24,9 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Testing backend..'
-                sh """
-                    cd backend
-                    ./jenkins-scripts/testing/test.sh
-                """
+                dir("backend") {
+                    sh "./jenkins-scripts/testing/test.sh"
+                }
             }
         }
         stage('Deploy') {
