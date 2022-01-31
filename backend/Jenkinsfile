@@ -10,19 +10,18 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh """
-                    cd backend
-                    docker build -t backend:$BUILD_NUMBER .
-                """
+                    echo "building docker image for backend"
+                dir("backend") {
+                    sh "docker build -t backend:$BUILD_NUMBER ."
+                }
             }
         }
         stage('Test') {
             steps {
                 echo 'Testing backend..'
-                sh """
-                    cd backend
-                    ./jenkins-scripts/testing/test.sh
-                """
+                dir("backend") {
+                    sh "./jenkins-scripts/testing/test.sh"
+                }
             }
         }
         stage('Deploy') {
@@ -30,8 +29,10 @@ pipeline {
                 branch 'main'
             }
             steps {
-                echo 'Deploying....'
-                println "${branch}"
+                echo 'Pushing backend image to dockerhub...'
+                dir("backend") {
+                    sh "./jenkins-scripts/deploying/deploy.sh"
+                }
             }
         }
     }
