@@ -33,7 +33,9 @@ pipeline {
         }
         stage('Deploy') {
             when {
-                params.Deploy
+                expression{
+                    params.Deploy
+                }
             }
             steps {
                 echo "tagging docker image with valid name"
