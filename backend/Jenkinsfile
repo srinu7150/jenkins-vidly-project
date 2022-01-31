@@ -34,7 +34,6 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploying....'
-                sh "echo $BRANCH_NAME"
             }
         }
     }
