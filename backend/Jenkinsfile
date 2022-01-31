@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    parameters{
+        booleanParam(name: 'deploy', defaultValue: false, description: 'Toggle this value to deploy to dockerhub')
+    }
 
     environment {
         DB_CREDENTIALS = credentials('DB_CREDENTIALS')
@@ -24,9 +27,11 @@ pipeline {
                 }
             }
         }
-        stage('Deploy') {
+        stage('deploy') {
             when {
-                branch 'main'
+                expression {
+                    return params.deploy
+                }
             }
             steps {
                 echo 'Pushing backend image to dockerhub...'
