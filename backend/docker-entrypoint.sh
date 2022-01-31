@@ -6,5 +6,5 @@ echo "Waiting for MongoDB to start..."
 echo "Migrating the databse..."
 npm run db:up 
 
-echo "starting test!"
+echo "starting test"
 npm test
