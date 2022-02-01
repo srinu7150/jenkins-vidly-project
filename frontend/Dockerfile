@@ -4,14 +4,14 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm install
 COPY . .
-RUN npm run build
+CMD npm test
 
-#stage:2 production stage
-FROM nginx:1.12-alpine
-COPY --from=build-stage /app/build /usr/share/nginx/html
-COPY nginx_config/web.conf /etc/nginx/conf.d/default.conf
-COPY nginx_config/* nginx_config/
-EXPOSE 80
+# #stage:2 production stage
+# FROM nginx:1.12-alpine
+# COPY --from=build-stage /app/build /usr/share/nginx/html
+# COPY nginx_config/web.conf /etc/nginx/conf.d/default.conf
+# COPY nginx_config/* nginx_config/
+# EXPOSE 80
 
-CMD /nginx_config/templating_script.sh
-#ENTRYPOINT [ "nginx", "-g", "daemon off;" ]
+# CMD /nginx_config/templating_script.sh
+# #ENTRYPOINT [ "nginx", "-g", "daemon off;" ]
