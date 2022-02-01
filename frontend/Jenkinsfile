@@ -3,7 +3,7 @@ pipeline{
 
     parameters {
         booleanParam(name: 'deploy', defaultValue: false, description: 'choose to deploy on dockerhub')
-        choice(name: 'Test_tool', choices: ['docker-compose', 'kubernetes'], description: 'For testing use dcoker-compose')
+        choice(name: 'Test_tool', choices: ['docker-compose', 'kubernetes'], description: 'For testing use docker-compose')
     }
     environment {
         DB_CREDENTIALS = credentials('DB_CREDENTIALS')
