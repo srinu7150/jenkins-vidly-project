@@ -1,9 +1,0 @@
-version: '3.9'
-services:
-  backend:
-    image: "backend:$BUILD_TAG"
-    environment:
-      - DB_USER = "$DB_CREDENTIALS_USR"
-      - DB_PASSWORD = "$DB_CREDENTIALS_PSW"
-      - DB_NAME = "$DB_NAME"
-    entrypoint: npm test
