@@ -11,6 +11,6 @@ services:
     environment:
       - DB_USER="${DB_CREDENTIALS_USR}"
       - DB_PASSWORD="${DB_CREDENTIALS_PSW}"
-      - DB_NAME=${DB_NAME}
+      - DB_NAME="${DB_NAME}"
     command: /app/docker-entrypoint.sh
 
