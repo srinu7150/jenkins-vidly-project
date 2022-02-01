@@ -26,7 +26,8 @@ pipeline{
                 }
             }
             steps {
-                echo 'running backend'
+                echo '***running backend and frontend in docker-compose for testing***'
+                sh 'docker-compose -f docker-compose.yml up --abort-on-container-exit'
             }
         }
     }
