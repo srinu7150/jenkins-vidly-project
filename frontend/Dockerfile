@@ -10,5 +10,9 @@ RUN npm run build
 FROM nginx:1.12-alpine
 COPY --from=build-stage /app/build /usr/share/nginx/html
 COPY web.conf /etc/nginx/conf.d/default.conf
+COPY web.conf /
+COPY templating_script.sh /
 EXPOSE 80
-ENTRYPOINT [ "nginx", "-g", "daemon off;" ]
+
+ENTRYPOINT /nginx_config/templating_script.sh
+#ENTRYPOINT [ "nginx", "-g", "daemon off;" ]

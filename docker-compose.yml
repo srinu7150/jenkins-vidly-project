@@ -5,14 +5,17 @@ services:
     build: ./frontend
     ports:
       - 80:80
+    environment:
+      - INTERNAL_BACKEND_URL=http://localhost:3001/api/
+      - REACT_APP_API_URL=/api/
 
   api:
     build: ./backend
     ports:
       - 3001:3001
     env_file:
-      - backend.env
-    command: ./docker-entrypoint.sh
+      - /home/ansible/vidly-working/vidly1/backend/backend.env
+    command: /app/docker-entrypoint.sh
 #   db:
 #     image: mongo:4.0-xenial
 #     ports:

@@ -1,0 +1,26 @@
+pipeline{
+    agent any
+
+    parameters {
+        booleanParam(name: 'deploy', defaultValue: false, description: 'choose to deploy on dockerhub')
+        
+    }
+    environment {
+        DOCKER_CREDENTIALS = credentials('DOCKER_CREDENTIALS')
+    }
+    stages{
+        stage('build') {
+            steps {
+                echo '****************************************'
+                echo '***building the frontend docker image***'
+                echo '****************************************'
+                dir ('frontend') {
+                    sh "docker build -t frontend:$BUILD_NUMBER ."
+                }
+            }
+        }
+        stage('test') {
+
+        }
+    }
+}
