@@ -6,6 +6,8 @@ pipeline{
         choice(name: 'Test_tool', choices: ['docker-compose', 'kubernetes'], description: 'For testing use dcoker-compose')
     }
     environment {
+        DB_CREDENTIALS = credentials('DB_CREDENTIALS')
+        DB_NAME = credentials('DB_NAME')
         DOCKER_CREDENTIALS = credentials('DOCKER_CREDENTIALS')
     }
     stages{
