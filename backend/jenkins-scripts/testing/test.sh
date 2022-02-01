@@ -10,5 +10,5 @@ docker run \
 --env DB_PASSWORD=$DB_CREDENTIALS_PSW \
 --env DB_NAME=$DB_NAME \
 backend:$BUILD_NUMBER \
-./docker-entrypoint.sh && npm test
+./jenkins-scripts/testing/docker-entrypoint-test.sh
 
