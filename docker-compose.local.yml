@@ -1,0 +1,23 @@
+version: "3.8"
+
+services:
+  web:
+    image: frontend:6
+    ports:
+      - "80:80"
+    environment:
+      - INTERNAL_BACKEND_URL=http://api
+      - INTERNAL_BACKEND_PORT=3001
+    command: nginx_config/templating_script.sh
+    depends_on:
+      - api
+  api:
+    build: ./backend
+    ports:
+      - "3001:3001"
+    environment:
+      - DB_USER=$DB_USER
+      - DB_PASSWORD=jXKWL6jnQ7RhgaD3
+      - DB_NAME=vidly
+    command: /app/docker-entrypoint.sh
+
