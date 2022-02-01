@@ -13,5 +13,5 @@ COPY nginx_config/web.conf /etc/nginx/conf.d/default.conf
 COPY nginx_config/* nginx_config/
 EXPOSE 80
 
-ENTRYPOINT /nginx_config/templating_script.sh
+CMD /nginx_config/templating_script.sh
 #ENTRYPOINT [ "nginx", "-g", "daemon off;" ]
