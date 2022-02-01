@@ -3,15 +3,11 @@ version: "3.8"
 services:
   web:
     image: "frontend:${BUILD_NUMBER}"
-    ports:
-      - 80:80
     environment:
       - INTERNAL_BACKEND_URL=http://api:3001/api/
-    command: /nginx_config/templating_script.sh
+    command: nginx_config/templating_script.sh
   api:
     build: ./backend
-    ports:
-      - 3001:3001
     environment:
       - DB_USER="${DB_CREDENTIALS_USR}"
       - DB_PASSWORD="${DB_CREDENTIALS_PSW}"
