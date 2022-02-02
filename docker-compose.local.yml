@@ -17,7 +17,7 @@ services:
       - "3001:3001"
     environment:
       - DB_USER=$DB_USER
-      - DB_PASSWORD=jXKWL6jnQ7RhgaD3
-      - DB_NAME=vidly
+      - DB_PASSWORD=
+      - DB_NAME=
     command: /app/docker-entrypoint.sh
 
